@@ -12,9 +12,9 @@ jobs:
     environment: npe
     runs-on: ubuntu-latest
     outputs: 
-      YOURMOM: ${{ steps.get-vars.outputs.YOURMOM }}
+      YOURMOM: ${{ steps.get-vars-step.outputs.YOURMOM }}
     steps:
-      - name: Get Some Vars
+      - name: get-vars-step
         run: |
           echo "reading vars 1"
           echo "your mom: ${{ secrets.YOURMOM }}"
