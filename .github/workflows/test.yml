@@ -18,7 +18,7 @@ jobs:
         run: |
           echo "reading vars 1"
           echo "your mom: ${{ secrets.YOURMOM }}"
-          echo "::set-output name=YOURMOM::$YOURMOM"
+          echo "::set-output name=YOURMOM::${{ secrets.YOURMOM }}""
 
           if ${{ secrets.YOURMOM }} -eq "1"; then
             echo "ha it's 1"
