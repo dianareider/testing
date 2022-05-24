@@ -17,6 +17,7 @@ jobs:
           echo "::set-output name=YOURMOM::$YOURMOM"
 
           YOURMOM2="borkasaurus"
+          echo "::add-mask::$YOURMOM2"
           echo "::set-output name=YOURMOM2::$YOURMOM2"
 
 
