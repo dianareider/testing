@@ -38,7 +38,7 @@ jobs:
           echo "reading vars passed from get-vars job"
           echo "your mom: ${{ needs.get-vars.outputs.YOURMOM }}"
 
-          echo "your mom 2: the borkening: ${{ needs.get-vars.outputs.YOURMOM }}"
+          echo "your mom 2: the borkening: ${{ needs.get-vars.outputs.YOURMOM2 }}"
 
 
           # PROD = 1
