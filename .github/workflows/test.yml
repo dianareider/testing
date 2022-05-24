@@ -18,12 +18,16 @@ jobs:
         run: |
           echo "reading vars 1"
           echo "your mom: ${{ secrets.YOURMOM }}"
-          echo "::set-output name=YOURMOM::${{ secrets.YOURMOM }}""
 
-          if ${{ secrets.YOURMOM }} -eq "1"; then
-            echo "ha it's 1"
+          YOURMOM="bork"
+          echo "::set-output name=YOURMOM::$YOURMOM"
+
+          # PROD = 1
+          # NPE = 2
+          if ${{ secrets.YOURMOM }} -eq "2"; then
+            echo "ha it's 2"
           else
-            echo "it is not 1"
+            echo "it is not 2"
           fi
           
 
