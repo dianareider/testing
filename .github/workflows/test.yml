@@ -31,8 +31,6 @@ jobs:
     environment: all
     runs-on: ubuntu-latest
     needs: get-vars
-    # with:
-    #   yourmom: ${{ needs.get-vars.outputs.YOURMOM }}
     steps:
       - name: Set Some Vars
         run: |
@@ -40,4 +38,4 @@ jobs:
           echo "i don't know: ${{ secrets.IDONTKNOW }}"
 
           echo "reading vars passed from get-vars job"
-          echo "your mom: ${{ github.jobs.get-vars.YOURMOM }}"
+          echo "your mom: ${{ needs.get-vars.outputs.YOURMOM }}"
