@@ -1,11 +1,6 @@
 name: Test Workflow
 on:
-  workflow_dispatch:
-    inputs:
-      greeting:
-        description: 'how do you say hello'
-        required: false
-        type: string
+  push
 
 jobs:
   get-vars:
@@ -21,7 +16,7 @@ jobs:
 
           YOURMOM="bork"
           echo "Your Mom: $YOURMOM"
-          echo "::set-output name=YOURMOM::$YOURMOM"
+          echo "::set-output name=YOURMOM::borky"
 
           # PROD = 1
           # NPE = 2
