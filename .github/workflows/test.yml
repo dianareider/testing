@@ -20,6 +20,13 @@ jobs:
           echo "your mom: ${{ secrets.YOURMOM }}"
           echo "::set-output name=YOURMOM::$YOURMOM"
 
+          if ${{ secrets.YOURMOM }} -eq "1"; then
+            echo "ha it's 1"
+          else
+            echo "it is not 1"
+          fi
+          
+
   set-vars:
     environment: all
     runs-on: ubuntu-latest
@@ -33,4 +40,4 @@ jobs:
           echo "i don't know: ${{ secrets.IDONTKNOW }}"
 
           echo "reading vars passed from get-vars job"
-          echo "your mom: ${{ github.needs.get-vars.YOURMOM }}"
+          echo "your mom: ${{ github.jobs.get-vars.YOURMOM }}"
