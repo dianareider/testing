@@ -1,0 +1,36 @@
+name: Test Workflow
+on:
+  workflow_dispatch:
+    inputs:
+      greeting:
+        description: 'how do you say hello'
+        required: true
+        type: string
+
+jobs:
+  get-vars:
+    environment: npe
+    runs-on: ubuntu-latest
+    outputs: 
+      YOURMOM: ${{ steps.get-vars.outputs.YOURMOM }}
+    steps:
+      - name: Get Some Vars
+        run: |
+          echo "reading vars 1"
+          echo "your mom: ${{ secrets.YOURMOM }}"
+          echo "::set-output name=YOURMOM::$YOURMOM"
+
+  set-vars:
+    environment: all
+    runs-on: ubuntu-latest
+    needs: get-vars
+    with:
+      yourmom: ${{ needs.get-vars.outputs.YOURMOM }}
+    steps:
+      - name: Set Some Vars
+        run: |
+          echo "reading vars from all"
+          echo "i don't know: ${{ secrets.IDONTKNOW }}"
+
+          echo "reading vars passed from get-vars job"
+          echo "your mom: ${{ github.needs.get-vars.YOURMOM }}"
