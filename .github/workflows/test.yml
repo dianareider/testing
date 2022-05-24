@@ -12,10 +12,9 @@ jobs:
       - name: get-vars-step
         id: get-vars-step
         run: |
-          echo "your mom: ${{ secrets.YOURMOM }}"
           YOURMOM=${{ secrets.YOURMOM }}
+          echo "::add-mask::$YOURMOM"
           echo "::set-output name=YOURMOM::$YOURMOM"
-          echo $YOURMOM
 
           YOURMOM2="borkasaurus"
           echo "::set-output name=YOURMOM2::$YOURMOM2"
