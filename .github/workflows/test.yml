@@ -16,6 +16,7 @@ jobs:
           YOURMOM="bork"
           echo "Your Mom: $YOURMOM"
           echo "::set-output name=YOURMOM::borky"
+          echo "::set-output name=YOURMOM2::borky2"
 
           # PROD = 1
           # NPE = 2
@@ -25,7 +26,10 @@ jobs:
             echo "no match sadface"
             echo $YOURMOM
           fi
-          
+      - name: hm
+        run: |
+          echo ${{ steps.get-vars-step.outputs.YOURMOM }}
+          echo ${{ steps.get-vars-step.outputs.YOURMOM2 }}
 
   set-vars:
     environment: all
