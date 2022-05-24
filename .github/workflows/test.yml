@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs: 
       YOURMOM: ${{ steps.get-vars-step.outputs.YOURMOM }}
+      YOURMOM2: ${{ steps.get-vars-step.outputs.YOURMOM2 }}
     steps:
       - name: get-vars-step
         id: get-vars-step
@@ -15,6 +16,10 @@ jobs:
           YOURMOM=${{ secrets.YOURMOM }}
           echo "::set-output name=YOURMOM::$YOURMOM"
           echo $YOURMOM
+
+          YOURMOM2="borkasaurus"
+          echo "::set-output name=YOURMOM2::$YOURMOM2"
+
 
       - name: hm
         run: |
@@ -32,6 +37,9 @@ jobs:
 
           echo "reading vars passed from get-vars job"
           echo "your mom: ${{ needs.get-vars.outputs.YOURMOM }}"
+
+          echo "your mom 2: the borkening: ${{ needs.get-vars.outputs.YOURMOM }}"
+
 
           # PROD = 1
           # NPE = 2
