@@ -20,14 +20,16 @@ jobs:
           # echo "your mom: ${{ secrets.YOURMOM }}"
 
           YOURMOM="bork"
+          echo "Your Mom: $YOURMOM"
           echo "::set-output name=YOURMOM::$YOURMOM"
 
           # PROD = 1
           # NPE = 2
-          if $YOURMOM -eq "bork"; then
+          if [[ "$YOURMOM" == "bork" ]]; then
             echo "matched!"
           else
             echo "no match sadface"
+            echo $YOURMOM
           fi
           
 
