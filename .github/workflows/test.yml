@@ -11,26 +11,14 @@ jobs:
       - name: get-vars-step
         id: get-vars-step
         run: |
-          # echo "reading vars 1"
-          # echo "your mom: ${{ secrets.YOURMOM }}"
+          echo "your mom: ${{ secrets.YOURMOM }}"
+          YOURMOM=${{ secrets.YOURMOM }}
+          echo "::set-output name=YOURMOM::$YOURMOM"
+          echo $YOURMOM
 
-          YOURMOM="bork"
-          echo "Your Mom: $YOURMOM"
-          echo "::set-output name=YOURMOM::borky"
-          echo "::set-output name=YOURMOM2::borky2"
-
-          # PROD = 1
-          # NPE = 2
-          if [[ "$YOURMOM" == "bork" ]]; then
-            echo "matched!"
-          else
-            echo "no match sadface"
-            echo $YOURMOM
-          fi
       - name: hm
         run: |
-          echo ${{ steps.get-vars-step.outputs.YOURMOM }}
-          echo ${{ steps.get-vars-step.outputs.YOURMOM2 }}
+          echo "echoing the secret: ${{ steps.get-vars-step.outputs.YOURMOM }}"
 
   set-vars:
     environment: all
@@ -44,3 +32,11 @@ jobs:
 
           echo "reading vars passed from get-vars job"
           echo "your mom: ${{ needs.get-vars.outputs.YOURMOM }}"
+
+          # PROD = 1
+          # NPE = 2
+          if [[ $YOURMOM == "2" ]]; then
+            echo "matched! second number"
+          else
+            echo "no match, sadface - first number"
+          fi
