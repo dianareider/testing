@@ -9,6 +9,7 @@ jobs:
       YOURMOM: ${{ steps.get-vars-step.outputs.YOURMOM }}
     steps:
       - name: get-vars-step
+        id: get-vars-step
         run: |
           # echo "reading vars 1"
           # echo "your mom: ${{ secrets.YOURMOM }}"
