@@ -1,7 +1,5 @@
 name: Test Workflow
-on:
-  push
-  workflow_dispatch
+on: [push, workflow_dispatch]
 
 jobs:
   get-vars:
