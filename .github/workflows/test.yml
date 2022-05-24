@@ -24,8 +24,8 @@ jobs:
     environment: all
     runs-on: ubuntu-latest
     needs: get-vars
-    with:
-      yourmom: ${{ needs.get-vars.outputs.YOURMOM }}
+    # with:
+    #   yourmom: ${{ needs.get-vars.outputs.YOURMOM }}
     steps:
       - name: Set Some Vars
         run: |
